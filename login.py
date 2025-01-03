@@ -10,7 +10,7 @@ def is_login_pod_running():
         v1 = client.CoreV1Api()
 
         # Check the status of the login pod
-        pods = v1.list_namespaced_pod(namespace="default", label_selector="app=login")
+        pods = v1.list_namespaced_pod(namespace="miniflask", label_selector="app=login")
         for pod in pods.items:
             if pod.status.phase == "Running":
                 return True

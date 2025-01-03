@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask App</title>
+<!--    <link rel="stylesheet" href="{{ url_for('static', filename='css/style-nav.css') }}">-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style-nav.css') }}">
+<!--    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">-->
+
+</head>
+<body>
+    <nav>
+        <ul class="navbar">
+            <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+            <li><a href="{{ url_for('page1') }}">Jenkins</a></li>
+            <li><a href="{{ url_for('page2') }}">Kubernetes</a></li>
+            <li><a href="{{ url_for('page3') }}">Docker</a></li>
+            <li><a href="{{ url_for('page4') }}">Minikube</a></li>
+             <li><a href="{{ url_for('logout') }}" class="logout">Logout</a></li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+
+<!--     <script>-->
+<!--        document.querySelectorAll('.nav-item').forEach(item => {-->
+<!--            item.addEventListener('click', function() {-->
+<!--                // Add 'move' class to navbar and content-->
+<!--                document.querySelector('.navbar').classList.add('move');-->
+<!--                document.querySelector('.content').classList.add('move');-->
+
+<!--                // Optional: You can remove the 'move' class after animation-->
+<!--                setTimeout(function() {-->
+<!--                    document.querySelector('.navbar').classList.remove('move');-->
+<!--                    document.querySelector('.content').classList.remove('move');-->
+<!--                }, 1000); // Match the duration of the animation (1s)-->
+<!--            });-->
+<!--        });-->
+<!--    </script>-->
+</body>
+</html>

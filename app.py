@@ -1,8 +1,12 @@
-from flask import Flask, render_template, request, redirect, url_for, session, flash
+from flask import Flask, render_template, request, redirect, url_for, session, flash, jsonify
 from login import login_user  # Importing the login functionality from login.py
+from login import is_login_pod_running
+from templates.Pages.pages import register_routes
+
 
 # Initialize Flask app
 app = Flask(__name__)
+# app = Flask(__name__, template_folder=['templates', 'Pages'])
 app.secret_key = "supersecretkey"  # Replace with a secure secret key for session management
 
 
@@ -32,6 +36,19 @@ def dashboard():
     return render_template("dashboard.html", message="Welcome to the Dashboard!")
 
 
+# Route to check pod health
+@app.route("/health")
+def health():
+    try:
+        pod_status = is_login_pod_running()
+        if pod_status:
+            return jsonify({"status": "Pod is running"}), 200
+        else:
+            return jsonify({"status": "Pod is not running"}), 503
+    except Exception as e:
+        return jsonify({"error": f"Error checking pod health: {str(e)}"}), 500
+
+
 # Route for logging out
 @app.route("/logout")
 def logout():
@@ -40,6 +57,10 @@ def logout():
     return redirect(url_for("login"))
 
 
+# Register routes from pages.py
+register_routes(app)
+
 # Run the app
 if __name__ == "__main__":
-    app.run(debug=True)
+    # app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000, debug=True)
