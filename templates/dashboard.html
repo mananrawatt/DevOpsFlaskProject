@@ -1,11 +1,63 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Dashboard</title>
-</head>
-<body>
-    <h1>Dashboard</h1>
-    <p>{{ message }}</p>
-    <a href="{{ url_for('logout') }}">Logout</a>
-</body>
-</html>
+{% extends 'Pages/BasePage.html' %}
+
+{% block content %}
+    <div class="dashboard-container">
+        <h1>Welcome to the Dashboard</h1>
+        <p>This is the main dashboard page.</p>
+        <!-- You can add more dashboard-specific content here -->
+    </div>
+{% endblock %}
+
+
+
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>{{ title }}</title>-->
+
+
+<!--</head>-->
+<!--<body>-->
+<!--    <h1>{{ title }}</h1>-->
+
+<!--    <nav>-->
+<!--        <ul>-->
+<!--            <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>-->
+<!--            <li><a href="{{ url_for('page1') }}">Page 1</a></li>-->
+<!--            <li><a href="{{ url_for('page2') }}">Page 2</a></li>-->
+<!--            <li><a href="{{ url_for('page3') }}">Page 3</a></li>-->
+<!--            <li><a href="{{ url_for('page4') }}">Page 4</a></li>-->
+<!--        </ul>-->
+<!--    </nav>-->
+<!--    <p>Welcome to the Dashboard!</p>-->
+<!--    <a href="{{ url_for('logout') }}">Logout</a>-->
+<!--</body>-->
+<!--</html>-->
+
+
+
+
+
+
+
+<!--&lt;!&ndash;<!DOCTYPE html>&ndash;&gt;-->
+<!--&lt;!&ndash;<html>&ndash;&gt;-->
+<!--&lt;!&ndash;<head>&ndash;&gt;-->
+<!--&lt;!&ndash;    <title>Dashboard</title>&ndash;&gt;-->
+<!--&lt;!&ndash;    &lt;!&ndash; Add the link to the style.css file &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">&ndash;&gt;-->
+<!--&lt;!&ndash;</head>&ndash;&gt;-->
+<!--&lt;!&ndash;<body>&ndash;&gt;-->
+<!--&lt;!&ndash;    <div class="container">&ndash;&gt;-->
+<!--&lt;!&ndash;        <h1>Dashboard</h1>&ndash;&gt;-->
+<!--&lt;!&ndash;        <p>{{ message }}</p>&ndash;&gt;-->
+
+<!--&lt;!&ndash;        <div>&ndash;&gt;-->
+<!--&lt;!&ndash;            &lt;!&ndash; Logout link &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;            <a href="{{ url_for('logout') }}">Logout</a>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;</body>&ndash;&gt;-->
+<!--&lt;!&ndash;</html>&ndash;&gt;-->

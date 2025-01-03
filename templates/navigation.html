@@ -1,0 +1,11 @@
+<!-- templates/navigation.html -->
+<nav class="navbar">
+    <ul class="nav-list">
+        <li><a href="{{ url_for('dashboard') }}" class="nav-link {% if request.path == url_for('dashboard') %}selected{% endif %}">Dashboard</a></li>
+        <li><a href="{{ url_for('page1') }}" class="nav-link {% if request.path == url_for('page1') %}selected{% endif %}">Page 1</a></li>
+        <li><a href="{{ url_for('page2') }}" class="nav-link {% if request.path == url_for('page2') %}selected{% endif %}">Page 2</a></li>
+        <li><a href="{{ url_for('page3') }}" class="nav-link {% if request.path == url_for('page3') %}selected{% endif %}">Page 3</a></li>
+        <li><a href="{{ url_for('page4') }}" class="nav-link {% if request.path == url_for('page4') %}selected{% endif %}">Page 4</a></li>
+    </ul>
+    <a href="{{ url_for('logout') }}" class="logout-btn">Logout</a>
+</nav>

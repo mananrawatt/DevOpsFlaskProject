@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: login-service
+  namespace: miniflask
+  labels:
+    app: login
+spec:
+  selector:
+    app: login
+  ports:
+    - protocol: TCP
+      port: 5000  # Exposed port
+      targetPort: 5000  # Container port
+  type: ClusterIP
