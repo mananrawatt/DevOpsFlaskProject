@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dashboard-deployment
+  namespace: miniflask
+  labels:
+    app: dashboard
+spec:
+  replicas: 1  # Number of instances of the dashboard pod
+  selector:
+    matchLabels:
+      app: dashboard
+  template:
+    metadata:
+      labels:
+        app: dashboard
+    spec:
+      containers:
+        - name: dashboard
+          image: mannanrawat/flaskdashboard-service:latest  # Replace with the actual Docker image for the dashboard
+          ports:
+            - containerPort: 80  # Adjust port if necessary
+          env:
+            - name: DASHBOARD_ENV_VAR  # Add any environment variables you need here
+              value: "production"

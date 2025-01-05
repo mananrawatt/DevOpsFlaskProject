@@ -1,0 +1,72 @@
+<!-- Example in jenkins.html -->
+{% extends 'Pages/BasePage.html' %}
+
+{% block content %}
+    <h1>Jenkins Status</h1>
+<p>{{ status }}</p>
+
+{% if logged_in %}
+    <h2>Welcome to Jenkins!</h2>
+    <h3>Pipeline Details:</h3>
+    <ul>
+        {% for pipeline in pipelines %}
+            <li>
+                <a href="{{ pipeline.url }}" target="_blank">
+                    {{ pipeline.name }} - Status: {{ pipeline.status }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <h3>Please log in to view Jenkins Pipelines</h3>
+
+    {% if login_message %}
+        <p style="color: red;">{{ login_message }}</p>
+    {% endif %}
+
+    <form method="POST">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
+
+        <button type="submit">Log In</button>
+    </form>
+{% endif %}
+
+{% endblock %}
+
+
+
+
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>{}p1</title>-->
+
+<!--</head>-->
+<!--<body>-->
+<!--    <h1>1</h1>-->
+
+<!--    <nav>-->
+<!--        <ul>-->
+<!--            <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>-->
+<!--            <li><a href="{{ url_for('page1') }}">Page 1</a></li>-->
+<!--            <li><a href="{{ url_for('page2') }}">Page 2</a></li>-->
+<!--            <li><a href="{{ url_for('page3') }}">Page 3</a></li>-->
+<!--            <li><a href="{{ url_for('page4') }}">Page 4</a></li>-->
+<!--        </ul>-->
+<!--    </nav>-->
+<!--    <p>This is Page 1</p>-->
+<!--    <a href="{{ url_for('logout') }}">Logout</a>-->
+<!--</body>-->
+<!--</html>-->
+
+
+
+
+
+
