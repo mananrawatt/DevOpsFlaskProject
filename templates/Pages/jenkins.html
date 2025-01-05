@@ -1,8 +1,40 @@
-<!-- Example in page1.html -->
+<!-- Example in jenkins.html -->
 {% extends 'Pages/BasePage.html' %}
 
 {% block content %}
-    <h1>JENKINS DETAILS </h1>
+    <h1>Jenkins Status</h1>
+<p>{{ status }}</p>
+
+{% if logged_in %}
+    <h2>Welcome to Jenkins!</h2>
+    <h3>Pipeline Details:</h3>
+    <ul>
+        {% for pipeline in pipelines %}
+            <li>
+                <a href="{{ pipeline.url }}" target="_blank">
+                    {{ pipeline.name }} - Status: {{ pipeline.status }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <h3>Please log in to view Jenkins Pipelines</h3>
+
+    {% if login_message %}
+        <p style="color: red;">{{ login_message }}</p>
+    {% endif %}
+
+    <form method="POST">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
+
+        <button type="submit">Log In</button>
+    </form>
+{% endif %}
+
 {% endblock %}
 
 

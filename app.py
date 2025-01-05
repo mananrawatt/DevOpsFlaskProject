@@ -2,7 +2,8 @@ from flask import Flask, render_template, request, redirect, url_for, session, f
 from login import login_user  # Importing the login functionality from login.py
 from login import is_login_pod_running
 from templates.Pages.pages import register_routes
-
+from dashboard import dashboard
+from health import health
 
 # Initialize Flask app
 app = Flask(__name__)
@@ -27,26 +28,31 @@ def login():
 
 
 # Route for the dashboard page
-@app.route("/dashboard")
-def dashboard():
-    if not session.get("logged_in"):
-        flash("You must log in to access the dashboard.", "warning")
-        return redirect(url_for("login"))
+# @app.route("/dashboard")
+# def dashboard():
+#     if not session.get("logged_in"):
+#         flash("You must log in to access the dashboard.", "warning")
+#         return redirect(url_for("login"))
+#
+#     return render_template("dashboard.html", message="Welcome to the Dashboard!")
 
-    return render_template("dashboard.html", message="Welcome to the Dashboard!")
+# Route for the dashboard page
+app.add_url_rule('/dashboard', 'dashboard', dashboard)
 
 
 # Route to check pod health
-@app.route("/health")
-def health():
-    try:
-        pod_status = is_login_pod_running()
-        if pod_status:
-            return jsonify({"status": "Pod is running"}), 200
-        else:
-            return jsonify({"status": "Pod is not running"}), 503
-    except Exception as e:
-        return jsonify({"error": f"Error checking pod health: {str(e)}"}), 500
+# @app.route("/health")
+# def health():
+#     try:
+#         pod_status = is_login_pod_running()
+#         if pod_status:
+#             return jsonify({"status": "Pod is running"}), 200
+#         else:
+#             return jsonify({"status": "Pod is not running"}), 503
+#     except Exception as e:
+#         return jsonify({"error": f"Error checking pod health: {str(e)}"}), 500
+
+app.add_url_rule('/heath', 'heath', health)
 
 
 # Route for logging out
